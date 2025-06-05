@@ -46,6 +46,9 @@ ollama run llama3
 ```
 
 ### Testing
+In `/test`, run `python test_endpoints.py`
+
+Manual testing: 
 Query either `localhost` or `<edge-server-ip>`
 1. Ensure Llama is running: 
 ```
