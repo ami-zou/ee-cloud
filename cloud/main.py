@@ -1,8 +1,28 @@
 from fastapi import FastAPI, UploadFile, File
-from jobs import submit_whisper_job
+from pydantic import BaseModel
+from .jobs import submit_whisper_job
+from .llama_runner import query_llama
 from uuid import uuid4
+import httpx
 
 app = FastAPI()
+
+class ChatRequest(BaseModel):
+    prompt: str
+
+@app.post("/chat")
+async def chat(req: ChatRequest):
+    response = await query_llama(req.prompt)
+    return {"response": response}
+
+@app.get("/health/ollama")
+async def health_check():
+    try:
+        async with httpx.AsyncClient(timeout=5.0) as client:
+            r = await client.get("http://localhost:11434")
+            return {"status": "OK", "ollama": r.status_code}
+    except Exception as e:
+        return {"status": "unavailable", "error": str(e)}
 
 @app.post("/submit-whisper")
 async def submit_job(audio_file: UploadFile = File(...)):
