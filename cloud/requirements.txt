@@ -3,6 +3,7 @@ anyio==4.9.0
 certifi==2025.4.26
 charset-normalizer==3.4.2
 click==8.2.1
+dotenv==0.9.9
 fastapi==0.115.12
 filelock==3.18.0
 fsspec==2025.5.1
@@ -19,8 +20,10 @@ networkx==3.5
 numba==0.61.2
 numpy==2.2.6
 openai-whisper @ git+https://github.com/openai/whisper.git@dd985ac4b90cafeef8712f2998d62c59c3e62d22
+psutil==7.0.0
 pydantic==2.11.5
 pydantic_core==2.33.2
+python-dotenv==1.1.0
 python-multipart==0.0.20
 regex==2024.11.6
 requests==2.32.3

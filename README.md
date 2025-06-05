@@ -4,7 +4,7 @@ Mini cloud for [Edge Esmeralda 2025](https://www.edgeesmeralda.com) Solar-powere
 ## Startup instructions for local development (macOS)
 1. Install Brew, then install python
 
-2. Set up python environment
+2. Set up python environment in `/cloud`
 ```
 chmod +x setup_env.sh
 ./setup_env.sh
@@ -14,12 +14,16 @@ chmod +x setup_env.sh
 pip install -r requirements.txt
 ```
 
-3. Run the development server in root directory with:
+3. Run the development server in `/cloud` directory with:
 ```
-   source .venv/bin/activate && uvicorn cloud.main:app --reload
+   source .venv/bin/activate && uvicorn main:app --reload
 ```
 
 4. Run Llama
+Run `docker compose up` at root directly
+
+Or run it separately:
+--
 Run docker Llama (recommended): 
 ```
 docker volume create ollama-data
@@ -48,11 +52,16 @@ Query either `localhost` or `<edge-server-ip>`
 curl http://<edge-server-ip>:11434/api/generate \
   -d '{
     "model": "llama3",
-    "prompt": "What is Edge Esmeralda?",
-    "stream": false
+    "prompt": "Hello",
+    "stream": true
   }' \
   -H "Content-Type: application/json"
 ```
+2. Ensure server is up & healthy:
+```
+curl http://localhost:8000/health
+```
+
 ```
 curl http://localhost:8000/health/ollama
 ```
