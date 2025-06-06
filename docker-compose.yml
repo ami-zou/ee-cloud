@@ -22,8 +22,8 @@ services:
     restart: "no"
   ee-cloud:
     container_name: backend-server
-    build: ./backend
-    # image: azou2020/ee-cloud:v1
+    # build: ./backend
+    image: azou2020/ee-cloud:v2
     ports:
       - "8000:8000"
     depends_on:
@@ -31,6 +31,8 @@ services:
     environment:
       - OLLAMA_HOST=http://ollama:11434
       - MODEL_NAME=llama3
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
     restart: always
 
 volumes:
