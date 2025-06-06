@@ -69,9 +69,9 @@ curl http://localhost:8000/health/ollama
 
 2. Prompting `chat` API:
 ```
-curl -X POST http://<edge-server-ip>:8000/chat \
+curl -X POST http://localhost:8000/chat \
   -H "Content-Type: application/json" \
-  -d '{"prompt": "What is Edge Esmeralda?"}'
+  -d '{"prompt": "Hello?"}'
 ```
 
 2. Check submit whisper job from `test` directory:

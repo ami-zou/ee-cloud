@@ -21,9 +21,9 @@ services:
       -d '{\"name\": \"llama3\"}'"
     restart: "no"
   ee-cloud:
-    # build: ./cloud
     container_name: backend-server
-    image: azou2020/ee-cloud:v1
+    build: ./backend
+    # image: azou2020/ee-cloud:v1
     ports:
       - "8000:8000"
     depends_on:
