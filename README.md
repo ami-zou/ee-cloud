@@ -20,10 +20,8 @@ pip install -r requirements.txt
 ```
 
 4. Run Llama
-Run `docker compose up` at root directly
+Run `docker compose up` at root directly. Or run it separately:
 
-Or run it separately:
---
 Run docker Llama (recommended): 
 ```
 docker volume create ollama-data
@@ -84,10 +82,18 @@ curl -X POST "http://<edge-server-ip>:8000/submit-whisper" \
   -F "audio_file=@test.txt"
 ```
 
-### Other notes
+### Development notes
 - Update dependencies with `pip freeze > requirements.txt`
 
+- Build and push docker image in `/cloud`
+```
+docker build -t azou2020/ee-cloud:latest .
+docker push azou2020/ee-cloud:latest
+```
+
 ## Physical server (linux) deployment
+0. Connect to the server via Tailscale & Cloudfare tunnel
+
 1. Install Docker
 ```
 sudo apt install docker.io
