@@ -23,7 +23,8 @@ services:
   ee-cloud:
     container_name: backend-server
     # build: ./backend
-    image: azou2020/ee-cloud:v2
+    image: azou2020/ee-cloud-linux:v2
+    platform: linux/amd64
     ports:
       - "8000:8000"
     depends_on:
