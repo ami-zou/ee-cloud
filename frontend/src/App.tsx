@@ -4,9 +4,10 @@ import './App.css'
 function App() {
   const [prompt, setPrompt] = useState('')
   const [messages, setMessages] = useState<{ sender: 'user' | 'bot'; text: string }[]>([])
-  const apiUrl = import.meta.env.VITE_CHAT_API_URL
+  // const apiUrl = import.meta.env.VITE_CHAT_API_URL
 
-  console.log('Chat API URL (env):', import.meta.env.VITE_CHAT_API_URL)
+  const apiUrl = "http://cloud.esmeraldacloud.com/chat"
+  console.log('Chat API URL (env):', apiUrl)
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
