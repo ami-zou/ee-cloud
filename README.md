@@ -84,12 +84,19 @@ curl -X POST http://localhost:8000/chat \
   -d '{"prompt": "Hello?"}'
 ```
 
-2. Check submit whisper job from `test` directory:
+3. Job Submission API:
+POST   https://cloud.esmeraldacloud.com/jobs
+GET    https://cloud.esmeraldacloud.com/jobs/{job_id}
+GET    https://cloud.esmeraldacloud.com/jobs/{job_id}/logs
+POST   https://cloud.esmeraldacloud.com/jobs/{job_id}/stop
+
 ```
-curl -X POST "http://<edge-server-ip>:8000/submit-whisper" \
-  -H "accept: application/json" \
-  -H "Content-Type: multipart/form-data" \
-  -F "audio_file=@test.txt"
+curl -X POST http://localhost:8000/jobs \
+  -H "Content-Type: application/json" \
+  -d '{"type":"docker","image":"nginx"}'
+```
+```
+curl -X GET http://localhost:8000/jobs/e62fb909-b600-4da8-80e5-9d3949d27c2e
 ```
 
 ### Development notes
