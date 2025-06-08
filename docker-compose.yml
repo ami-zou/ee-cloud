@@ -61,7 +61,7 @@ services:
     #   dockerfile: Dockerfile
     #   args:
     #     VITE_CHAT_API_URL: http://backend:8000/chat
-    image: azou2020/frontend:v1
+    image: azou2020/frontend:v3
     container_name: frontend
     ports:
       - "3000:3000"

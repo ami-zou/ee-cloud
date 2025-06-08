@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 export default function JobSubmitForm() {
-  const apiBase = "http://cloud.esmeraldacloud.com"
+  const apiBase = "https://cloud.esmeraldacloud.com"
   const jobUrl = `${apiBase}/jobs`
 
   const [type, setType] = useState<'docker' | 'github'>('docker')

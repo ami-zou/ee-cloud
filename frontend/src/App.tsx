@@ -7,7 +7,7 @@ function App() {
   const [prompt, setPrompt] = useState('')
   const [messages, setMessages] = useState<{ sender: 'user' | 'bot'; text: string }[]>([])
 
-  const apiBase = "http://cloud.esmeraldacloud.com"
+  const apiBase = "https://cloud.esmeraldacloud.com"
   const chatUrl = `${apiBase}/chat`
   console.log('Chat API URL (env) is:', apiBase)
 
