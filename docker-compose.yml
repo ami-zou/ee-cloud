@@ -29,21 +29,42 @@ services:
       -H 'Content-Type: application/json'
       -d '{\"name\": \"llama3\"}'"
     restart: "no"
-  ee-cloud:
-    container_name: backend-server
-    # build: ./backend
-    image: azou2020/ee-cloud-linux:v2
-    platform: linux/amd64
+
+  deep-seek-model-loader:
+    image: curlimages/curl:latest
+    depends_on:
+      - ollama
+    entrypoint: /bin/sh
+    command: >
+      -c "sleep 5 && curl -X POST http://ollama:11434/api/pull -H 'Content-Type: application/json' -d '{\"name\": \"deepseek-r1:7b\"}'"
+    restart: "no"
+
+  backend:
+    container_name: backend
+    #build: ./backend
+    image: azou2020/backend:v2.1
+    # platform: linux/amd64
     ports:
       - "8000:8000"
     depends_on:
       - ollama
     environment:
       - OLLAMA_HOST=http://ollama:11434
-      - MODEL_NAME=llama3
+      - MODEL_NAME=deepseek-r1:7b
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     restart: always
+
+  frontend:
+    # build:
+    #   context: ./frontend
+    #   dockerfile: Dockerfile
+    image: azou2020/frontend:v1
+    container_name: frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
 
 volumes:
   ollama-data:
