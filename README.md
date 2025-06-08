@@ -58,6 +58,16 @@ curl http://<edge-server-ip>:11434/api/generate \
   }' \
   -H "Content-Type: application/json"
 ```
+and DeepSeek
+```
+curl http://localhost:11434/api/generate \
+  -d '{
+    "model": "deepseek-r1:7b",
+    "prompt": "Hello",
+    "stream": true
+  }' \
+  -H "Content-Type: application/json"
+```
 2. Ensure server is up & healthy:
 ```
 curl http://localhost:8000/health
