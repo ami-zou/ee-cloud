@@ -7,7 +7,7 @@ function App() {
   // const apiUrl = import.meta.env.VITE_CHAT_API_URL
 
   const apiUrl = "http://cloud.esmeraldacloud.com/chat"
-  console.log('Chat API URL (env):', apiUrl)
+  console.log('Chat API URL (env) is:', apiUrl)
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()

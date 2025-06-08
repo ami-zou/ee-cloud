@@ -9,7 +9,6 @@ ARG VITE_CHAT_API_URL
 ENV VITE_CHAT_API_URL=$VITE_CHAT_API_URL
 
 COPY . .
-COPY .env .env
 
 RUN npm install
 RUN npm run build
