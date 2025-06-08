@@ -18,6 +18,14 @@ OLLAMA_HOST = os.getenv("OLLAMA_HOST", "http://localhost:11434")
 
 app = FastAPI()
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Replace "*" with specific domains if you want
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 class ChatRequest(BaseModel):
     prompt: str
 
